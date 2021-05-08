@@ -1,8 +1,15 @@
+import { getTheme } from '@fluentui/react';
+import { ThemeProvider } from 'styled-components';
+
+import GlobalStyle from 'styles/global';
+
 function App() {
+  const theme = getTheme();
+
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+    </ThemeProvider>
   );
 }
 
