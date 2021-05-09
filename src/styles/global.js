@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
 export default createGlobalStyle`
  * {
@@ -15,6 +15,12 @@ export default createGlobalStyle`
   }
 
   html, body, #root {
-    min-height: 100%;
+    height: 100%;
   }
+
+  ${({ theme }) => css`
+    body {
+      font-family: ${theme.fonts.large.fontFamily};
+    }
+  `}
 `;
