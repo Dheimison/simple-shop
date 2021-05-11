@@ -1,9 +1,11 @@
 import { ActionButton, IconButton } from '@fluentui/react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import * as S from './styles';
 
-export function Header({ onLogoClick, onMenuClick }) {
+export function Header({ openMenu }) {
+  const history = useHistory();
   const logoProps = { iconName: 'ShoppingCart', style: { fontSize: 26 } };
   const menuProps = { iconName: 'GlobalNavButton', style: { fontSize: 26 } };
 
@@ -14,16 +16,15 @@ export function Header({ onLogoClick, onMenuClick }) {
       verticalAlign="center"
       tokens={{ childrenGap: 15 }}
     >
-      <ActionButton iconProps={logoProps} onClick={() => onLogoClick('/')}>
+      <ActionButton iconProps={logoProps} onClick={() => history.push('/home')}>
         <S.LogoText>S-Shop</S.LogoText>
       </ActionButton>
 
-      <IconButton iconProps={menuProps} onClick={onMenuClick} />
+      <IconButton iconProps={menuProps} onClick={openMenu} />
     </S.Stack>
   );
 }
 
 Header.propTypes = {
-  onLogoClick: PropTypes.func.isRequired,
-  onMenuClick: PropTypes.func.isRequired,
+  openMenu: PropTypes.func.isRequired,
 };

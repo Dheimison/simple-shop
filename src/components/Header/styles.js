@@ -3,6 +3,7 @@ import { Stack as DefaultStack } from '@fluentui/react';
 
 export const Stack = styled(DefaultStack)`
   ${({ theme }) => css`
+    height: 60px;
     padding: 10px 30px;
     border-bottom: 1px solid ${theme.palette.neutralLight};
   `}
