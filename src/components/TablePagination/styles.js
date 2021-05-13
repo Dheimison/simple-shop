@@ -3,9 +3,10 @@ import styled, { css } from 'styled-components';
 export const PaginationContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   column-gap: 5px;
+  row-gap: 5px;
 `;
 
 export const PaginationButton = styled.button`
