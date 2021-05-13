@@ -16,6 +16,7 @@ export function Layout({ children, currentLinks, userLinks, adminLinks }) {
 
   return (
     <Stack
+      vertical
       tokens={{ maxWidth: 1920 }}
       style={{ width: '100%', height: '100%', margin: '0 auto' }}
     >
@@ -28,9 +29,13 @@ export function Layout({ children, currentLinks, userLinks, adminLinks }) {
       />
 
       <MainContext.Provider value={{ count, setCount }}>
-        <Stack horizontal style={{ height: '100%' }}>
-          <Sidebar links={currentLinks} />
-          {children}
+        <Stack horizontal style={{ height: '100%', width: '100%' }}>
+          <Stack.Item>
+            <Sidebar links={currentLinks} />
+          </Stack.Item>
+          <Stack.Item styles={{ root: { minWidth: 200 } }} grow>
+            {children}
+          </Stack.Item>
         </Stack>
       </MainContext.Provider>
     </Stack>
