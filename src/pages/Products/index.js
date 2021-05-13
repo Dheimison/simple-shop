@@ -64,7 +64,7 @@ export function Products() {
       style={{ height: '100%' }}
     >
       <Helmet>
-        <title>S-Shop - Produtos</title>
+        <title>Produtos - S-Shop</title>
         <meta name="description" content="Todos os produtos do S-Shop" />
       </Helmet>
 
