@@ -18,7 +18,7 @@ export function Layout({ children, currentLinks, userLinks, adminLinks }) {
     <Stack
       vertical
       tokens={{ maxWidth: 1920 }}
-      style={{ width: '100%', height: '100%', margin: '0 auto' }}
+      style={{ width: '100%', margin: '0 auto' }}
     >
       <Header openMenu={openMenu} />
       <Menu

@@ -14,8 +14,13 @@ export default createGlobalStyle`
     }
   }
 
-  html, body, #root {
+  html, body {
     height: 100%;
+  }
+
+  #root {
+    display: flex;
+    min-height: 100%;
   }
 
   ${({ theme }) => css`
