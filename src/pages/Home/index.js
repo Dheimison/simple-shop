@@ -62,16 +62,18 @@ export function Home() {
         wrap
         tokens={{ childrenGap: 10 }}
       >
-        <Stack.Item grow>
+        <Stack.Item grow={5}>
           <CustomBreadcrumb pathname={history.location.pathname} />
         </Stack.Item>
 
-        <SearchBox
-          onSearch={(newValue) => searchProducts(newValue)}
-          onChange={(_, newValue) => {
-            searchProducts(newValue);
-          }}
-        />
+        <Stack.Item grow={1}>
+          <SearchBox
+            onSearch={(newValue) => searchProducts(newValue)}
+            onChange={(_, newValue) => {
+              searchProducts(newValue);
+            }}
+          />
+        </Stack.Item>
       </Stack>
 
       {currentProducts.length > 0 ? (
