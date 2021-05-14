@@ -28,7 +28,7 @@ export function CustomBreadcrumb({ pathname }) {
   function customStyles({ theme }) {
     const customLastChild = {
       ':last-child .ms-Breadcrumb-item': {
-        // color: theme.palette.neutralSecondary,
+        color: theme.palette.neutralSecondary,
         fontWeight: theme.fonts.large.fontWeight,
       },
     };
