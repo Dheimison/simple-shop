@@ -63,7 +63,7 @@ export function ProductTable({ addProductToCart, products }) {
               onClick={() =>
                 setProductQuantity((prevItems) => ({
                   ...prevItems,
-                  [item.id]: prevItems[item.id] - 1,
+                  [item.id]: Number(prevItems[item.id]) - 1,
                 }))
               }
               disabled={
@@ -74,12 +74,14 @@ export function ProductTable({ addProductToCart, products }) {
               style={{ width: 50 }}
               min={1}
               value={productQuantity[item.id] ?? 1}
-              onChange={(_, newValue) =>
-                setProductQuantity((prevItems) => ({
-                  ...prevItems,
-                  [item.id]: newValue.replace(/\D/g, ''),
-                }))
-              }
+              onChange={(_, newValue) => {
+                if (newValue.replace(/\D/g, '')) {
+                  setProductQuantity((prevItems) => ({
+                    ...prevItems,
+                    [item.id]: Number(newValue.replace(/\D/g, '')),
+                  }));
+                }
+              }}
             />
             <IconButton
               iconProps={{ iconName: 'Add' }}
@@ -88,7 +90,9 @@ export function ProductTable({ addProductToCart, products }) {
               onClick={() =>
                 setProductQuantity((prevItems) => ({
                   ...prevItems,
-                  [item.id]: prevItems[item.id] ? prevItems[item.id] + 1 : 2,
+                  [item.id]: prevItems[item.id]
+                    ? Number(prevItems[item.id]) + 1
+                    : 2,
                 }))
               }
             />
