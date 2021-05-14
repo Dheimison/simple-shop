@@ -1,18 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Stack } from '@fluentui/react';
 import { useBoolean } from '@fluentui/react-hooks';
 import PropTypes from 'prop-types';
 
-import { MainContext } from 'contexts';
 import { Header } from 'components/Header';
 import { Sidebar } from 'components/Sidebar';
 import { Menu } from 'components/Menu';
+import { MainContext } from 'contexts';
+import { useLocalStorage } from 'hooks';
 
 export function Layout({ children, currentLinks, userLinks, adminLinks }) {
+  const [itemsInCart] = useLocalStorage('cart', []);
   const [count, setCount] = useState({ cart: 0 });
   const [isMenuOpen, { setTrue: openMenu, setFalse: closeMenu }] = useBoolean(
     false
   );
+
+  useEffect(() => {
+    setCount((prevState) => ({ ...prevState, cart: itemsInCart.length }));
+  }, [itemsInCart]);
 
   return (
     <Stack
