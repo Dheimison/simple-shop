@@ -6,4 +6,8 @@ export const Container = styled.div`
     width: 200px;
     height: 100%;
   `}
+
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
