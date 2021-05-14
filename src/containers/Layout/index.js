@@ -9,7 +9,12 @@ import { Menu } from 'components/Menu';
 import { MainContext } from 'contexts';
 import { useLocalStorage } from 'hooks';
 
-export function Layout({ children, currentLinks, userLinks, adminLinks }) {
+export default function Layout({
+  children,
+  currentLinks,
+  userLinks,
+  adminLinks,
+}) {
   const [itemsInCart] = useLocalStorage('cart', []);
   const [count, setCount] = useState({ cart: 0 });
   const [isMenuOpen, { setTrue: openMenu, setFalse: closeMenu }] = useBoolean(

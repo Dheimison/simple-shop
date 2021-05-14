@@ -1,7 +1,9 @@
-import { Home } from 'pages/Home';
-import { Cart } from 'pages/Cart';
-import { Products } from 'pages/Products';
-import { Orders } from 'pages/Orders';
+import { lazy } from 'react';
+
+const Home = lazy(() => import('pages/Home'));
+const Cart = lazy(() => import('pages/Cart'));
+const Products = lazy(() => import('pages/Products'));
+const Orders = lazy(() => import('pages/Orders'));
 
 export const USER_ROUTES = [
   {
