@@ -3,7 +3,7 @@ import { Cart } from 'pages/Cart';
 import { Products } from 'pages/Products';
 import { Orders } from 'pages/Orders';
 
-export const MAIN_ROUTES = [
+export const USER_ROUTES = [
   {
     key: 'HOME',
     name: 'Home',
@@ -54,9 +54,9 @@ export const ADMIN_REDIRECTS = [
   },
 ];
 
-export const MAIN_REDIRECTS = [
+export const USER_REDIRECTS = [
   {
-    key: 'REDIRECT_MAIN_HOME',
+    key: 'REDIRECT_USER_HOME',
     from: '/',
     to: '/home',
     exact: true,
