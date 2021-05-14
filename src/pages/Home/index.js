@@ -23,8 +23,15 @@ export function Home() {
 
   function handleAddProductToCart(product) {
     const allCartItems = [...cartItems];
+    const productIsAlreadyInCart = allCartItems.findIndex(
+      (currentProduct) => currentProduct.id === product.id
+    );
 
-    allCartItems.unshift(product);
+    if (productIsAlreadyInCart !== -1) {
+      allCartItems[productIsAlreadyInCart].quantity += product.quantity;
+    } else {
+      allCartItems.unshift(product);
+    }
 
     setCart(allCartItems);
     setCount((prevState) => ({ ...prevState, cart: allCartItems.length }));
