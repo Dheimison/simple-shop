@@ -18,15 +18,18 @@ import {
 const Layout = lazy(() => import('containers/Layout'));
 const NotFound = lazy(() => import('pages/NotFound'));
 
+const progressStyles = {
+  root: { width: '100%' },
+  itemProgress: { padding: 0 },
+};
+
 export function Routes() {
   const allUserPaths = USER_ROUTES.map((route) => route.path);
   const allAdminPaths = ADMIN_ROUTES.map((route) => route.path);
 
   return (
     <Router>
-      <Suspense
-        fallback={<ProgressIndicator styles={{ root: { width: '100%' } }} />}
-      >
+      <Suspense fallback={<ProgressIndicator styles={progressStyles} />}>
         <Switch>
           {USER_REDIRECTS.map((route) => (
             <Redirect
@@ -52,16 +55,20 @@ export function Routes() {
               userLinks={USER_ROUTES}
               adminLinks={ADMIN_ROUTES}
             >
-              <Switch>
-                {ADMIN_ROUTES.map((route) => (
-                  <Route
-                    key={route.key}
-                    path={route.path}
-                    exact={route.exact}
-                    component={route.component}
-                  />
-                ))}
-              </Switch>
+              <Suspense
+                fallback={<ProgressIndicator styles={progressStyles} />}
+              >
+                <Switch>
+                  {ADMIN_ROUTES.map((route) => (
+                    <Route
+                      key={route.key}
+                      path={route.path}
+                      exact={route.exact}
+                      component={route.component}
+                    />
+                  ))}
+                </Switch>
+              </Suspense>
             </Layout>
           </Route>
 
@@ -71,16 +78,20 @@ export function Routes() {
               userLinks={USER_ROUTES}
               adminLinks={ADMIN_ROUTES}
             >
-              <Switch>
-                {USER_ROUTES.map((route) => (
-                  <Route
-                    key={route.key}
-                    path={route.path}
-                    exact={route.exact}
-                    component={route.component}
-                  />
-                ))}
-              </Switch>
+              <Suspense
+                fallback={<ProgressIndicator styles={progressStyles} />}
+              >
+                <Switch>
+                  {USER_ROUTES.map((route) => (
+                    <Route
+                      key={route.key}
+                      path={route.path}
+                      exact={route.exact}
+                      component={route.component}
+                    />
+                  ))}
+                </Switch>
+              </Suspense>
             </Layout>
           </Route>
 
